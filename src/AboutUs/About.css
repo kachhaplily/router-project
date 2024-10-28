@@ -1,0 +1,13 @@
+.parallax-item {
+    perspective: 1000px;
+  }
+  
+  .parallax-item img {
+    transform: translateZ(-20px) scale(1.1);
+    transition: transform 1s ease;
+  }
+  
+  .parallax-item:hover img {
+    transform: translateZ(0) scale(1);
+  }
+  

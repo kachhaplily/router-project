@@ -1,13 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Layout from './Layout/Layout';
+import Home from './Home/Home';
+import About from './AboutUs/About'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import GitUser, { gitUserLoader } from './Github/github';
+
+const router = createBrowserRouter([{
+  path:"/",
+  element:<Layout></Layout>,
+  children:[{
+    // path:":id",
+    path:"",
+    element:<Home></Home>
+  },
+  {
+    path:"about",
+    element:<About></About>
+  },
+  {
+    path:"gitUser",
+    loader:gitUserLoader,
+    element:<GitUser></GitUser>,
+   
+  }
+]
+}]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}></RouterProvider>
   </React.StrictMode>
 );
 
